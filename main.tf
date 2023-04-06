@@ -91,7 +91,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   tags = {
     Name = "demo_nat_gateway"
   }
-} 
+}
 # Terraform Data Block - To Lookup Latest Ubuntu 20.04 AMI Image
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -113,4 +113,15 @@ resource "aws_instance" "web_server" {
   tags = {
     Name = "Ubuntu EC2 Server"
   }
+}
+resource "aws_s3_bucket" "my-new-S3-bucket" {
+  bucket = "my-new-tf-test-bucket-darry-u-thecaribou"
+  tags = {
+    Name    = "My S3 Bucket"
+    Purpose = "Intro to Resource Blocks Lab"
+  }
+}
+resource "aws_s3_bucket_acl" "my_new_bucket_acl" {
+  bucket = aws_s3_bucket.my-new-S3-bucket.id
+  acl    = "private"
 }
