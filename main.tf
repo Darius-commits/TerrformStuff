@@ -115,7 +115,7 @@ resource "aws_instance" "web_server" {
   }
 }
 resource "aws_s3_bucket" "my-new-S3-bucket" {
-  bucket = "my-new-tf-test-bucket-darry-u-thecaribou"
+  bucket = "my-new-tf-test-bucket-${random_id.randomness.hex}"
   tags = {
     Name    = "My S3 Bucket"
     Purpose = "Intro to Resource Blocks Lab"
